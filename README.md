@@ -27,8 +27,10 @@ Solana RPC                PostgreSQL              REST Client
 ```bash
 cp .env.example .env
 # Edit .env with your RPC_URL, PROGRAM_ID, and IDL_PATH
-docker-compose up
+docker compose up
 ```
+
+Docker Compose handles everything automatically: builds the TypeScript project, runs database migrations, and starts the indexer + API server. No manual `pnpm install`, `pnpm run build`, or `prisma migrate` needed.
 
 The API will be available at `http://localhost:3000`.
 
@@ -110,10 +112,11 @@ curl "http://localhost:3000/transactions?limit=10&offset=20"
 | `IDL_ADDRESS` | One of IDL_PATH/IDL_ADDRESS | On-chain IDL address | - |
 | `DATABASE_URL` | Yes | PostgreSQL connection string | - |
 | `BATCH_SIZE` | No | Signatures per RPC batch | 100 |
-| `START_SIGNATURE` | No | Start indexing from this signature | - |
-| `END_SIGNATURE` | No | Stop indexing at this signature | - |
-| `START_SLOT` | No | Start slot (reserved) | - |
-| `END_SLOT` | No | End slot (reserved) | - |
+| `MAX_TRANSACTIONS` | No | Stop after N transactions | - |
+| `START_SIGNATURE` | No | Start from this signature (signature mode) | - |
+| `END_SIGNATURE` | No | Stop at this signature (signature mode) | - |
+| `START_SLOT` | No | Start slot (slot mode) | - |
+| `END_SLOT` | No | End slot (slot mode, defaults to current) | - |
 
 ## Development
 
