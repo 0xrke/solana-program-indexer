@@ -32,7 +32,7 @@ docker compose up
 
 Docker Compose handles everything automatically: builds the TypeScript project, runs database migrations, and starts the indexer + API server. No manual `pnpm install`, `pnpm run build`, or `prisma migrate` needed.
 
-The API will be available at `http://localhost:3000`.
+The API will be available at `http://localhost:3003`.
 
 ## API Reference
 
@@ -41,7 +41,7 @@ The API will be available at `http://localhost:3000`.
 Returns a single transaction with decoded instructions.
 
 ```bash
-curl http://localhost:3000/transactions/5VERv8NMvzbJMEkV8xnrLkEaWRtSz9CosKDYjCJjBRnbJLgp8uirBgmQpjKhoR4tjF3ZpRzrFmBV6UjKdiSZkQN
+curl http://localhost:3003/transactions/5VERv8NMvzbJMEkV8xnrLkEaWRtSz9CosKDYjCJjBRnbJLgp8uirBgmQpjKhoR4tjF3ZpRzrFmBV6UjKdiSZkQN
 ```
 
 **Response (200):**
@@ -71,16 +71,16 @@ List transactions with optional filters and pagination.
 
 ```bash
 # All transactions
-curl http://localhost:3000/transactions
+curl http://localhost:3003/transactions
 
 # Filter by instruction name
-curl http://localhost:3000/transactions?instruction=deposit
+curl http://localhost:3003/transactions?instruction=deposit
 
 # Filter by signer
-curl http://localhost:3000/transactions?signer=pubkey1...
+curl http://localhost:3003/transactions?signer=pubkey1...
 
 # Pagination
-curl "http://localhost:3000/transactions?limit=10&offset=20"
+curl "http://localhost:3003/transactions?limit=10&offset=20"
 ```
 
 **Query Parameters:**
