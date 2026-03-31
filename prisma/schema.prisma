@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Transaction {
+  id        Int      @id @default(autoincrement())
+  signature String   @unique
+  slot      BigInt
+  blockTime DateTime? @map("block_time")
+  fee       BigInt?
+  success   Boolean
+  signers   String[]
+  raw       Json?
+  createdAt DateTime @default(now()) @map("created_at")
+
+  instructions Instruction[]
+
+  @@map("transactions")
+}
+
+model Instruction {
+  id              Int      @id @default(autoincrement())
+  transactionId   Int      @map("transaction_id")
+  programId       String   @map("program_id")
+  instructionName String   @map("instruction_name")
+  accounts        Json
+  args            Json
+  ixIndex         Int      @map("ix_index")
+  createdAt       DateTime @default(now()) @map("created_at")
+
+  transaction Transaction @relation(fields: [transactionId], references: [id])
+
+  @@map("instructions")
+}

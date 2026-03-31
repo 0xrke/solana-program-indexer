@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Database
+*.db
+*.sqlite
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+coc-settings.json
+
+# Prompt
+solana-indexer-prompt.md
+
+# Test & coverage
+coverage/
+.nyc_output/
+
+# pnpm
+.pnpm-store/
+
+# Prisma
+prisma/generated/
